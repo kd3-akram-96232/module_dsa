@@ -1,0 +1,55 @@
+class QueueLL {
+
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    Node front, rear;
+
+    void add(int val) {
+        Node n = new Node(val);
+
+        if (rear == null) {
+            front = rear = n;
+            return;
+        }
+
+        rear.next = n;
+        rear = n;
+    }
+
+    void remove() {
+        if (front == null) {
+            System.out.println("Queue empty");
+            return;
+        }
+
+        front = front.next;
+
+        if (front == null) {
+            rear = null;
+        }
+    }
+
+    void peek() {
+        if (front == null) {
+            System.out.println("Queue empty");
+            return;
+        }
+        System.out.println(front.data);
+    }
+
+    void show() {
+        Node temp = front;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+}
